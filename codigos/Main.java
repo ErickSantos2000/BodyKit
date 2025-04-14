@@ -1,20 +1,24 @@
-import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
         // construtores
         Carro carro = new Carro("Nissan", "Skyline GTR R34", 2002, "Azul");
         BodyShop oficina = new BodyShop();
+        ColorShop pintura = new ColorShop();
 
         // chamada dos metodos
-        oficina.setTrocarCor(carro, "Vermelho");
-         System.out.println();
+        pintura.pintura(carro, "Vermelho");
+        System.out.println();
 
         oficina.instalarBodyKit(carro, 1);
         oficina.instalarRodas(carro, 1);
         oficina.instalarCapo(carro, 1);
         oficina.instalarAerofolio(carro, 1);
+
+        System.out.println();
+
+        carro.ligarCarro();
+        carro.desligarCarro();
 
         System.out.println();
         oficina.mostrarCarroceria(carro);
@@ -27,6 +31,9 @@ public class Main {
         System.out.println();
         carro.exibir();
         System.out.println();
+
+        pintura.colocarNeon(carro, 2);
+        pintura.colocarAdesivo(carro, 3);
 
     }
 }
