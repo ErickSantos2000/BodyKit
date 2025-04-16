@@ -92,9 +92,9 @@ public class BodyShop {
                 break;
 
             case 3:
-                carro.setCapo("Rodas Off-road");
+                carro.setCapo("Rodas de Corrida");
                 this.rodasS = 3;
-                System.out.println("Rodas Off-road instaladas!");
+                System.out.println("Rodas de Corridas instaladas!");
                 break;
 
             default:

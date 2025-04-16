@@ -3,90 +3,22 @@ public class Carro {
     private String fabricante;
     private String modelo;
     private String cor;
-    private boolean ligado;
     private int ano;
+
+    private boolean ligado;
     private int velocidade;
+
+    private int aerodinamica;
+    private int VelocidadeAtual;
+
     private String aeroFolio;
     private String bodyKit;
     private String rodas;
     private String capo;
     private String neon;
-    private String corRodas;
     private String adesivo;
 
-    // cor set e get
-    public String getCor(){
-        return cor;
-    }
-    public void setCor(String color){
-        cor = color;
-    }
 
-    public String getAeroFolio(){
-        return aeroFolio;
-    }
-    public void setAerofolio(String aeroFolio){
-        this.aeroFolio = aeroFolio;
-    }
-
-    // Getter e Setter para bodyKit
-    public String getBodyKit() {
-        return bodyKit;
-    }
-
-    public void setBodyKit(String bodyKit) {
-        this.bodyKit = bodyKit;
-    }
-
-    // Getter e Setter para rodas
-    public String getRodas() {
-        return rodas;
-    }
-
-    public void setRodas(String rodas) {
-        this.rodas = rodas;
-    }
-
-    // Getter e Setter para capo
-    public String getCapo() {
-        return capo;
-    }
-
-    public void setCapo(String capo) {
-        this.capo = capo;
-    }
-
-    //
-    public int getVelocidade(){
-        return velocidade;
-    }
-    public void setVelocidade(int novaVelocidade){
-        velocidade = novaVelocidade;
-    }
-
-    //
-    public boolean getLigado(){
-        return ligado;
-    }
-    public void setLigado(boolean onOff){
-        ligado = onOff;
-    }
-
-    //
-    public String getNeon(){
-        return neon;
-    }
-    public void setNeon(String neon){
-        this.neon = neon;
-    }
-
-    //
-    public String getAdesivo(){
-        return adesivo;
-    }
-    public void setAdesivo(String adesivo){
-        this.adesivo = adesivo;
-    }
 
     public Carro(String fabricante, String modelo, int ano, String cor){
         this.fabricante = fabricante;
@@ -99,10 +31,9 @@ public class Carro {
         rodas = "Padrão de fabrica";
         capo = "Padrão de fabrica";
         ligado = false;
+        aerodinamica = 0;
+        VelocidadeAtual = 0;
     }
-
-    int aerodinamica = 0;
-    int VelocidadeAtual = 0;
 
     public void ligarCarro(){
         if(!ligado){
@@ -114,7 +45,11 @@ public class Carro {
     }
 
     public void desligarCarro(){
-        if(ligado){
+
+        if(getVelocidade() != 0) {
+            System.out.println("Não é possivel Desligá-lo em movimento. Pare-o antes de desligar.");
+        }
+        else if(ligado){
             ligado = false;
             System.out.println("Carro desligado!");
         } else {
@@ -160,8 +95,79 @@ public class Carro {
         System.out.println("Fabricante: " + fabricante + "\nModelo: "+ modelo + "\nAno de lançamento: "+ ano + "\nCor: " + cor);
     }
 
-    public void aero() {
-        System.out.println("A aerodinâmica aumentou a velocidade de " + VelocidadeAtual + "Kmh para " + aerodinamica + "Kmh");
+
+    //
+    public String getModelo(){
+        return modelo;
+    }
+
+    //
+    public String getCor(){
+        return cor;
+    }
+    public void setCor(String color){
+        cor = color;
+    }
+
+    public String getAeroFolio(){
+        return aeroFolio;
+    }
+    public void setAerofolio(String aeroFolio){
+        this.aeroFolio = aeroFolio;
+    }
+
+    //
+    public String getBodyKit() {
+        return bodyKit;
+    }
+
+    public void setBodyKit(String bodyKit) {
+        this.bodyKit = bodyKit;
+    }
+
+    //
+    public String getRodas() {
+        return rodas;
+    }
+
+    public void setRodas(String rodas) {
+        this.rodas = rodas;
+    }
+
+    //
+    public String getCapo() {
+        return capo;
+    }
+
+    public void setCapo(String capo) {
+        this.capo = capo;
+    }
+
+    //
+    public int getVelocidade(){
+        return velocidade;
+    }
+
+    //
+    public boolean getLigado(){
+        return ligado;
+    }
+
+
+    //
+    public String getNeon(){
+        return neon;
+    }
+    public void setNeon(String neon){
+        this.neon = neon;
+    }
+
+    //
+    public String getAdesivo(){
+        return adesivo;
+    }
+    public void setAdesivo(String adesivo){
+        this.adesivo = adesivo;
     }
 
 }

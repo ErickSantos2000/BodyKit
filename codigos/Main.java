@@ -1,39 +1,228 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
-        // construtores
         Carro carro = new Carro("Nissan", "Skyline GTR R34", 2002, "Azul");
         BodyShop oficina = new BodyShop();
         ColorShop pintura = new ColorShop();
 
-        // chamada dos metodos
-        pintura.pintura(carro, "Vermelho");
-        System.out.println();
+        int opcao;
 
-        oficina.instalarBodyKit(carro, 1);
-        oficina.instalarRodas(carro, 1);
-        oficina.instalarCapo(carro, 1);
-        oficina.instalarAerofolio(carro, 1);
+        do {
+            System.out.println("\n=== MENU PRINCIPAL ===");
+            System.out.println("1 - Ir para a BodyShop");
+            System.out.println("2 - Ir para a ColorShop");
+            System.out.println("3 - Entrar no carro");
+            System.out.println("0 - Sair");
+            System.out.print("Escolha uma opção: ");
+            opcao = sc.nextInt();
 
-        System.out.println();
+            switch (opcao) {
+                case 1:
+                    int escolha;
+                    do {
+                        System.out.println("\n-- BODYSHOP --");
+                        System.out.println("1 - Instalar BodyKit");
+                        System.out.println("2 - Instalar Rodas");
+                        System.out.println("3 - Instalar Capô");
+                        System.out.println("4 - Instalar Aerofólio");
+                        System.out.println("5 - Ver Carroceria");
+                        System.out.println("0 - Voltar");
+                        System.out.print("Escolha uma opção: ");
+                        escolha = sc.nextInt();
 
-        carro.ligarCarro();
-        carro.desligarCarro();
+                        switch (escolha) {
+                            case 1:
+                                int opcBody;
+                                do {
+                                    System.out.println("1 - Bodykit Estético aumenta a aceleração em 10km");
+                                    System.out.println("2 - Bodykit Aerodinâmico aumenta a aceleração em 20km");
+                                    System.out.println("3 - Widebody Kit aumenta a aceleração em 30km");
+                                    System.out.println("0 - Sair");
 
-        System.out.println();
-        oficina.mostrarCarroceria(carro);
-        System.out.println();
-        carro.acelerar(2, oficina);
-        System.out.println();
-        carro.parar();
-        System.out.println();
-        carro.aero();
-        System.out.println();
-        carro.exibir();
-        System.out.println();
+                                    System.out.print("Escolha uma opção: ");
+                                    opcBody = sc.nextInt();
 
-        pintura.colocarNeon(carro, 2);
-        pintura.colocarAdesivo(carro, 3);
+                                    oficina.instalarBodyKit(carro, opcBody);
 
+                                }while (opcBody != 0);
+
+                                break;
+                            case 2:
+                                int opcRodas;
+                                do {
+                                    System.out.println("1 - Rodas de Liga Leve a aceleração em 10km");
+                                    System.out.println("2 - Rodas Esportivas aumenta a aceleração em 20km");
+                                    System.out.println("3 - Rodas de Corridas aumenta a aceleração em 30km");
+                                    System.out.println("0 - Sair");
+
+                                    System.out.print("Escolha uma opção: ");
+                                    opcRodas = sc.nextInt();
+
+                                    oficina.instalarRodas(carro, opcRodas);
+
+                                }while (opcRodas != 0);
+
+                                break;
+                            case 3:
+                                int opcCapo;
+                                do {
+                                    System.out.println("1 - Capô de Fibra aumenta a aceleração em 10km");
+                                    System.out.println("2 - Capô Transparente aumenta a aceleração em 20km");
+                                    System.out.println("3 - Capô com Tomada de Ar aumenta a aceleração em 30km");
+                                    System.out.println("0 - Sair");
+
+                                    System.out.print("Escolha uma opção: ");
+                                    opcCapo = sc.nextInt();
+
+                                    oficina.instalarCapo(carro, opcCapo);
+
+                                }while (opcCapo != 0);
+
+                                break;
+                            case 4:
+                                oficina.instalarAerofolio(carro, 1);
+                                break;
+                            case 5:
+                                oficina.mostrarCarroceria(carro);
+                                break;
+                        }
+                    } while (escolha != 0);
+                    break;
+
+                case 2:
+                    int corOpcao;
+                    do {
+                        System.out.println("\n-- COLORSHOP --");
+                        System.out.println("1 - Pintar carro");
+                        System.out.println("2 - Colocar Neon");
+                        System.out.println("3 - Colocar Adesivo");
+                        System.out.println("4 - Mostrar visual");
+                        System.out.println("0 - Voltar");
+                        System.out.print("Escolha uma opção: ");
+                        corOpcao = sc.nextInt();
+
+                        switch (corOpcao) {
+                            case 1:
+                                int opCor;
+                                do {
+                                    System.out.println("1 - Prata");
+                                    System.out.println("2 - Vermelho");
+                                    System.out.println("3 - Preto");
+                                    System.out.println("0 - Sair");
+
+                                    System.out.print("Escolha uma opção: ");
+                                    opCor = sc.nextInt();
+
+                                    pintura.pintura(carro, opCor);
+
+                                }while (opCor != 0);
+
+                                break;
+                            case 2:
+                                int corNeon;
+                                do {
+                                    System.out.println("1 - Azul");
+                                    System.out.println("2 - Vermelho");
+                                    System.out.println("3 - Branco");
+                                    System.out.println("0 - Sair");
+
+                                    System.out.print("Escolha uma opção: ");
+                                    corNeon = sc.nextInt();
+
+                                    pintura.colocarNeon(carro, corNeon);
+
+                                }while (corNeon != 0);
+
+                                break;
+                            case 3:
+                                int opcAdesivo;
+                                do {
+                                    System.out.println("1 - Faixa Esportiva");
+                                    System.out.println("2 - Chamas");
+                                    System.out.println("3 - Logo Personalizado");
+                                    System.out.println("0 - Sair");
+
+                                    System.out.print("Escolha uma opção: ");
+                                    opcAdesivo = sc.nextInt();
+
+                                    pintura.colocarAdesivo(carro, opcAdesivo);
+
+                                }while (opcAdesivo != 0);
+
+                                break;
+                            case 4:
+                                pintura.exbirVisual(carro);
+                                break;
+                        }
+                    } while (corOpcao != 0);
+                    break;
+
+                case 3:
+                    int carroOpc;
+                    do {
+                        System.out.println("---" + carro.getModelo() + "---");
+                        if(!carro.getLigado()){
+                            System.out.println("1 - Ligar ");
+                        }
+                        else {
+                            System.out.println("1 - Desligar ");
+                        }
+                        System.out.println("2 - Acelerar");
+                        System.out.println("3 - Parar ");
+                        System.out.println("4 - Exibir informações do carro");
+                        System.out.println("0 - Sair do carro");
+                        carroOpc = sc.nextInt();
+
+                        switch (carroOpc){
+                            case 1:
+                                if(!carro.getLigado()){
+                                    carro.ligarCarro();
+                                }
+                                else {
+
+                                    carro.desligarCarro();
+                                }
+
+                                break;
+                            case 2:
+                                carro.acelerar(2, oficina);
+
+                                break;
+                            case 3:
+                                carro.parar();
+
+                                break;
+
+                            case 4:
+                                carro.exibir();
+
+                                break;
+                            case 0:
+                                if(carro.getVelocidade() != 0){
+                                    System.out.println("Não pode sair do carro rapaz! Pare-o antes!");
+                                }
+                                break;
+
+                            default:
+                                System.out.println("Opção inválida.");
+
+                        }
+                    } while (carroOpc != 0 || carro.getVelocidade() != 0);
+                    break;
+
+                case 0:
+                    System.out.println("Saindo...");
+                    break;
+
+                default:
+                    System.out.println("Opção inválida.");
+            }
+
+        } while (opcao != 0);
+
+        sc.close();
     }
 }
