@@ -7,9 +7,8 @@ public class Carro {
 
     private boolean ligado;
     private int velocidade;
-
     private int aerodinamica;
-    private int VelocidadeAtual;
+    private int aceleracaoModificada;
 
     private String aeroFolio;
     private String bodyKit;
@@ -17,8 +16,6 @@ public class Carro {
     private String capo;
     private String neon;
     private String adesivo;
-
-
 
     public Carro(String fabricante, String modelo, int ano, String cor){
         this.fabricante = fabricante;
@@ -32,7 +29,6 @@ public class Carro {
         capo = "Padrão de fabrica";
         ligado = false;
         aerodinamica = 0;
-        VelocidadeAtual = 0;
     }
 
     public void ligarCarro(){
@@ -59,23 +55,22 @@ public class Carro {
 
     public void acelerar(int valor, BodyShop oficina){
         int vezes = 0;
-        int addVelocidade = oficina.getVeloAerofolio() + oficina.getVeloBodyKit() + oficina.getVeloRodas() + oficina.getVelocapo();
+        aceleracaoModificada = oficina.getVeloAerofolio() + oficina.getVeloBodyKit() + oficina.getVeloRodas() + oficina.getVelocapo();
 
         if(getLigado() == true){
-            valor += addVelocidade;
-            while (vezes < valor){
-                vezes++;
-                velocidade += 10;
-                System.out.println("Acelerando..." + velocidade + "Kmh");
-            }
-            aerodinamica = velocidade;
-            addVelocidade *= 10;
-            VelocidadeAtual = aerodinamica - addVelocidade;
-        } else {
-            System.out.println("Não é possivel acelerar, carro está desligado!");
-        }
+            valor += aceleracaoModificada;
+                while (vezes < valor){
+                    vezes++;
+                    velocidade++;
+                    if(velocidade % 10 == 0){
+                        System.out.println("Acelerando..." + velocidade + "Kmh");
+                    }
+                }
+                } else {
+                    System.out.println("Não é possivel acelerar, carro está desligado!");
+                    }
 
-    }
+                }
 
     public void parar(){
         if(velocidade > 0){
@@ -87,14 +82,17 @@ public class Carro {
             System.out.println("Carro parado.");
         } else {
             System.out.println("Carro desligado, não é possivel frear!");
+            }
         }
-
-    }
 
     public void exibir(){
         System.out.println("Fabricante: " + fabricante + "\nModelo: "+ modelo + "\nAno de lançamento: "+ ano + "\nCor: " + cor);
     }
 
+    //
+    public int getAceleracaoModificada(){
+        return aceleracaoModificada;
+    }
 
     //
     public String getModelo(){
@@ -153,7 +151,6 @@ public class Carro {
         return ligado;
     }
 
-
     //
     public String getNeon(){
         return neon;
@@ -170,4 +167,8 @@ public class Carro {
         this.adesivo = adesivo;
     }
 
+    //
+    public int getAerodinamica(){
+        return aerodinamica;
+    }
 }

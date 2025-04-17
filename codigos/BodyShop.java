@@ -17,6 +17,10 @@ public class BodyShop {
         return capoS;
     }
 
+    public void mostrarAceleracao(BodyShop oficina) {
+        int aceleracao = oficina.getVeloAerofolio() + oficina.getVeloBodyKit() + oficina.getVeloRodas() + oficina.getVelocapo();
+        System.out.println("Aceleração: " + aceleracao + "Kmh1");
+    }
 
     public void mostrarCarroceria(Carro carro) {
         System.out.println("----Carroceria----");
@@ -31,24 +35,28 @@ public class BodyShop {
     switch (aerofolio) {
         case 1:
             carro.setAerofolio("Aerofólio Fixo");
-            this.aerofolioS = 1;
+            this.aerofolioS = 5;
             System.out.println("Aerofólio Fixo instalado!");
             break;
 
         case 2:
             carro.setAerofolio("Aerofólio Ativo");
-            this.aerofolioS = 2;
+            this.aerofolioS = 10;
             System.out.println("Aerofólio Ativo instalado!");
             break;
 
         case 3:
             carro.setAerofolio("Aerofólio Regulável");
-            this.aerofolioS = 3;
+            this.aerofolioS = 15;
             System.out.println("Aerofólio Regulável instalado!");
             break;
 
+        case 0:
+            System.out.println("Saindo...");
+            break;
+
         default:
-            System.out.println("Aerofólio não instalado.");
+            System.out.println("Opção invalida.");
         }
     }
 
@@ -56,24 +64,28 @@ public class BodyShop {
         switch (bodyKit) {
             case 1:
                 carro.setBodyKit("Bodykit Estético");
-                this.bodyKitS = 1;
+                this.bodyKitS = 5;
                 System.out.println("Bodykit Estético instalado!");
                 break;
 
             case 2:
                 carro.setBodyKit("Bodykit Aerodinâmico");
-                this.bodyKitS = 2;
+                this.bodyKitS = 10;
                 System.out.println("Bodykit Aerodinâmico instalado!");
                 break;
 
             case 3:
                 carro.setBodyKit("Widebody Kit");
-                this.bodyKitS = 3;
+                this.bodyKitS = 15;
                 System.out.println("Widebody Kit instalado!");
                 break;
 
+            case 0:
+                System.out.println("Saindo...");
+                break;
+
             default:
-                System.out.println("BodyKit não instalado.");
+                System.out.println("Opção invalida.");
         }
     }
 
@@ -81,24 +93,28 @@ public class BodyShop {
         switch (rodas){
             case 1:
                 carro.setRodas("Rodas de Liga Leve");
-                this.rodasS = 1;
+                this.rodasS = 5;
                 System.out.println("Rodas de Liga Leve instaladas!");
                 break;
 
             case 2:
                 carro.setRodas("Rodas Esportivas");
-                this.rodasS = 2;
+                this.rodasS = 10;
                 System.out.println("Rodas Esportivas instaladas!");
                 break;
 
             case 3:
                 carro.setCapo("Rodas de Corrida");
-                this.rodasS = 3;
+                this.rodasS = 15;
                 System.out.println("Rodas de Corridas instaladas!");
                 break;
 
+            case 0:
+                System.out.println("Saindo...");
+                break;
+
             default:
-                System.out.println("Roda não instalada.");
+                System.out.println("Opção invalida.");
         }
     }
 
@@ -106,27 +122,28 @@ public class BodyShop {
         switch (capo){
             case 1:
                 carro.setRodas("Capô de Fibra de Carbono");
-                this.capoS = 1;
+                this.capoS = 5;
                 System.out.println("Capô de Fibra de Carbono instalado!");
                 break;
 
             case 2:
                 carro.setCapo("Capô Transparente");
-                this.capoS = 2;
+                this.capoS = 10;
                 System.out.println("Capô Transparente instalado!");
                 break;
 
             case 3:
                 carro.setCapo("Capô com Tomada de Ar");
-                this.capoS = 3;
+                this.capoS = 15;
                 System.out.println("Capô com Tomada de Ar instalado!");
                 break;
 
+                case 0:
+                    System.out.println("Saindo...");
+                break;
+
             default:
-                System.out.println("Capo não instalado.");
+                System.out.println("Opção invalida.");
         }
     }
 }
-
-
-

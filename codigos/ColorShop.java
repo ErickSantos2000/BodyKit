@@ -3,21 +3,25 @@ public class ColorShop {
         switch (novaCor) {
             case 1:
                 carro.setCor("Prata");
-                System.out.println("Carro pintado de prata instalado!");
+                System.out.println("Carro pintado de prata!");
                 break;
 
             case 2:
                 carro.setCor("Vermelho");
-                System.out.println("Carro pintado de vermelho instalado!");
+                System.out.println("Carro pintado de vermelho!");
                 break;
 
             case 3:
                 carro.setCor("Preto");
-                System.out.println("Carro pintado de preto instalado!");
+                System.out.println("Carro pintado de preto!");
+                break;
+
+            case 0:
+                System.out.println("Saindo...");
                 break;
 
             default:
-                System.out.println("Carro não pintado.");
+                System.out.println("Opção invalida.");
         }
     }
 
@@ -38,8 +42,12 @@ public class ColorShop {
                 System.out.println("Neon branco instalado!");
                 break;
 
+            case 0:
+                System.out.println("Saindo...");
+                break;
+
             default:
-                System.out.println("Neon não instalado.");
+                System.out.println("Opção invalida.");
         }
     }
 
@@ -57,8 +65,13 @@ public class ColorShop {
                 carro.setAdesivo("Logo Personalizado");
                 System.out.println("Adesivo 'Logo Personalizado' aplicado!");
                 break;
+
+            case 0:
+                System.out.println("Saindo...");
+                break;
+
             default:
-                System.out.println("Adesivo não aplicado.");
+                System.out.println("Opção invalida.");
         }
     }
 

@@ -29,6 +29,7 @@ public class Main {
                         System.out.println("3 - Instalar Capô");
                         System.out.println("4 - Instalar Aerofólio");
                         System.out.println("5 - Ver Carroceria");
+                        System.out.println("6 - Aceleração");
                         System.out.println("0 - Voltar");
                         System.out.print("Escolha uma opção: ");
                         escolha = sc.nextInt();
@@ -37,9 +38,9 @@ public class Main {
                             case 1:
                                 int opcBody;
                                 do {
-                                    System.out.println("1 - Bodykit Estético aumenta a aceleração em 10km");
-                                    System.out.println("2 - Bodykit Aerodinâmico aumenta a aceleração em 20km");
-                                    System.out.println("3 - Widebody Kit aumenta a aceleração em 30km");
+                                    System.out.println("1 - Bodykit Estético aumenta a aceleração em 5km");
+                                    System.out.println("2 - Bodykit Aerodinâmico aumenta a aceleração em 10km");
+                                    System.out.println("3 - Widebody Kit aumenta a aceleração em 15km");
                                     System.out.println("0 - Sair");
 
                                     System.out.print("Escolha uma opção: ");
@@ -53,9 +54,9 @@ public class Main {
                             case 2:
                                 int opcRodas;
                                 do {
-                                    System.out.println("1 - Rodas de Liga Leve a aceleração em 10km");
-                                    System.out.println("2 - Rodas Esportivas aumenta a aceleração em 20km");
-                                    System.out.println("3 - Rodas de Corridas aumenta a aceleração em 30km");
+                                    System.out.println("1 - Rodas de Liga Leve a aceleração em 5km");
+                                    System.out.println("2 - Rodas Esportivas aumenta a aceleração em 10km");
+                                    System.out.println("3 - Rodas de Corridas aumenta a aceleração em 15km");
                                     System.out.println("0 - Sair");
 
                                     System.out.print("Escolha uma opção: ");
@@ -69,9 +70,9 @@ public class Main {
                             case 3:
                                 int opcCapo;
                                 do {
-                                    System.out.println("1 - Capô de Fibra aumenta a aceleração em 10km");
-                                    System.out.println("2 - Capô Transparente aumenta a aceleração em 20km");
-                                    System.out.println("3 - Capô com Tomada de Ar aumenta a aceleração em 30km");
+                                    System.out.println("1 - Capô de Fibra aumenta a aceleração em 5km");
+                                    System.out.println("2 - Capô Transparente aumenta a aceleração em 10km");
+                                    System.out.println("3 - Capô com Tomada de Ar aumenta a aceleração em 15km");
                                     System.out.println("0 - Sair");
 
                                     System.out.print("Escolha uma opção: ");
@@ -83,10 +84,27 @@ public class Main {
 
                                 break;
                             case 4:
-                                oficina.instalarAerofolio(carro, 1);
+                                int opcAerofolio;
+                                do {
+                                    System.out.println("1 - Aerofólio Fixo aumenta a aceleração em 5km");
+                                    System.out.println("2 - Aerofólio Ativo aumenta a aceleração em 10km");
+                                    System.out.println("3 - Aerofólio Regulável aumenta a aceleração em 15km");
+                                    System.out.println("0 - Sair");
+
+                                    System.out.print("Escolha uma opção: ");
+                                    opcAerofolio = sc.nextInt();
+
+                                    oficina.instalarAerofolio(carro, opcAerofolio);
+
+                                }while (opcAerofolio != 0);
+
                                 break;
                             case 5:
                                 oficina.mostrarCarroceria(carro);
+                                break;
+
+                            case 6:
+                                oficina.mostrarAceleracao(oficina);
                                 break;
                         }
                     } while (escolha != 0);
@@ -174,6 +192,7 @@ public class Main {
                         System.out.println("3 - Parar ");
                         System.out.println("4 - Exibir informações do carro");
                         System.out.println("0 - Sair do carro");
+                        System.out.print("Escolha uma opção: ");
                         carroOpc = sc.nextInt();
 
                         switch (carroOpc){
@@ -188,7 +207,23 @@ public class Main {
 
                                 break;
                             case 2:
-                                carro.acelerar(2, oficina);
+                                if(carro.getAceleracaoModificada() > 0){
+
+                                    if(360 > carro.getVelocidade()){
+                                        carro.acelerar(20, oficina);
+                                    }
+                                    else {
+                                        System.out.println("Velocidade máxima alcançada!");
+                                    }
+                                }
+                                else {
+                                    if(280 > carro.getVelocidade()){
+                                        carro.acelerar(20, oficina);
+                                    }
+                                    else {
+                                        System.out.println("Velocidade máxima alcançada!");
+                                    }
+                                }
 
                                 break;
                             case 3:
@@ -203,14 +238,17 @@ public class Main {
                             case 0:
                                 if(carro.getVelocidade() != 0){
                                     System.out.println("Não pode sair do carro rapaz! Pare-o antes!");
-                                }
+                                } if(carro.getLigado() == true){
+                                System.out.println("Não pode sair do carro rapaz! O c3arro está ligado!");
+                            }
                                 break;
 
                             default:
                                 System.out.println("Opção inválida.");
 
                         }
-                    } while (carroOpc != 0 || carro.getVelocidade() != 0);
+                    } while (carroOpc != 0 || carro.getVelocidade() != 0 || carro.getLigado() == true);
+
                     break;
 
                 case 0:
